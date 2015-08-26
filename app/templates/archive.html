@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<div class="page-header">
+	<h2>Archives</h1>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-4"><p class="text-center lead"><strong>Date</strong></p></div>
+		<div class="col-md-4"><p class="text-center lead"><strong>Title</strong></p></div>
+		<div class="col-md-2"></div>
+	</div>
+	{% for post in posts %}
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-4">
+			<ul class="text-center">
+				
+					<p class="lead">{{ moment(post.timestamp).format('LL') }}</p>
+				
+			</ul>
+		</div>
+		<div class="col-md-4">
+			<ul class="text-center">
+				
+					<p class="lead">
+						<a href="{{ url_for('.post', id=post.id) }}"><strong>{{post.title}}</strong></a>
+					</p>
+				
+			</ul>
+			
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+	{% endfor %}
+</div>
+
+{% endblock %}

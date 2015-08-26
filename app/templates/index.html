@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+<div class="jumbotron">
+	<div class="container">
+			<h1>{{ posts[0].title }}</h1>
+		
+			<p><a class="btn btn-primary btn-lg" href="{{ url_for('.post', id=posts[0].id) }}" role="button">Learn more</a></p>
+	</div>
+</div>
+
+
+{% endblock %}

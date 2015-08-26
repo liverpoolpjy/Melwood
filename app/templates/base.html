@@ -1,0 +1,40 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Melwood{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+	<div class="container">
+		<a href="/" class="navbar-brand"><strong>Melwood</strong></a>
+		<ul class="nav navbar-nav navbar-right">
+			<li>
+				<a href="/archive">archives</a>
+			</li>
+			<li>
+				<a href="/">pictures</a>
+			</li>
+			<li>
+				<a href="/about">about</a>
+			</li>
+		</ul>
+	</div>	
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	{% block page_content %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+{{ pagedown.include_pagedown() }}
+
+{% endblock %}
