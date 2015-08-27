@@ -13,13 +13,13 @@
 		<a href="/" class="navbar-brand"><strong>Melwood</strong></a>
 		<ul class="nav navbar-nav navbar-right">
 			<li>
-				<a href="/archive">archives</a>
+				<a href="/archive"><strong>archives</strong></a>
 			</li>
 			<li>
-				<a href="/">pictures</a>
+				<a href="/"><strong>pictures</strong></a>
 			</li>
 			<li>
-				<a href="/about">about</a>
+				<a href="/about"><strong>about</strong></a>
 			</li>
 		</ul>
 	</div>	
@@ -28,7 +28,14 @@
 
 {% block content %}
 <div class="container">
-	{% block page_content %}{% endblock %}
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    {% block page_content %}{% endblock %}
 </div>
 {% endblock %}
 

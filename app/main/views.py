@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
 from datetime import datetime
-from flask import render_template, session, redirect, url_for
+from flask import render_template, session, redirect, url_for, flash
 from .forms import PostForm, CommentForm
 from . import main 
 from .. import db
@@ -34,5 +35,26 @@ def post(id):
     post = Post.query.get_or_404(id)
     return render_template('post.html', post=post)
 
+@main.route('/edit_post/<int:id>', methods=['GET', 'POST'])
+def edit_post(id):
+    post = Post.query.get_or_404(id)
+    form = PostForm()
+    if form.validate_on_submit():
+        # post = Post(title=form.title.data,
+        #     body=form.body.data)
+        post.body = form.body.data
+        post.title = form.title.data
+        db.session.add(post)
+        flash('The post has been updated.')
+        return redirect(url_for('.post', id=post.id))
+    form.title.data = post.title
+    form.body.data = post.body
+    return render_template('update.html', form=form)
 
+@main.route('/delete/<int:id>')
+def delete(id):
+    post = Post.query.get_or_404(id)
+    db.session.delete(post)
+    flash('The post has been deleted.')
+    return redirect(url_for('.archive'))
     

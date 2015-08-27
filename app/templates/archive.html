@@ -7,14 +7,12 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-2"></div>
 		<div class="col-md-4"><p class="text-center lead"><strong>Date</strong></p></div>
 		<div class="col-md-4"><p class="text-center lead"><strong>Title</strong></p></div>
-		<div class="col-md-2"></div>
+		<div class="col-md-4"><p class="text-center lead"><strong>Operation</strong></p></div>
 	</div>
 	{% for post in posts %}
 	<div class="row">
-		<div class="col-md-2"></div>
 		<div class="col-md-4">
 			<ul class="text-center">
 				
@@ -32,7 +30,12 @@
 			</ul>
 			
 		</div>
-		<div class="col-md-2"></div>
+		<div class="col-md-4">
+			<ul class="text-center">
+				<a href="{{ url_for('.edit_post', id=post.id) }}"><span class="label label-primary">Edit</span></a>
+				<a href="{{ url_for('.delete', id=post.id) }}"><span class="label label-danger">Delete</span></a>
+			</ul>
+		</div>
 	</div>
 	{% endfor %}
 </div>
