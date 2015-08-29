@@ -1,0 +1,26 @@
+<ul class="comments">
+	{% for comment in comments %}
+	<li class="comment">
+		<div class="comment-thumbnail">
+			<a href="{% if  comment.author_website %}{{ comment.author_website}}{% else %}{{ url_for('.post', id=post.id) }}{% endif %}">
+			<img class="img-rounded profile-thumbnail" src="{{ url_for('static', filename='M48.ico') }}">
+			</a>
+		</div>
+		<div class="comment-content">
+			<div class="comment-date">{{ moment(post.timestamp).format('LL') }}</div>
+			<div class="comment-author">
+				<a href="{% if  comment.author_website %}{{ comment.author_website}}{% else %}{{ url_for('.post', id=post.id) }}{% endif %}">
+				{{ comment.author_name }}
+				</a>
+				<div class="comment-body">
+					{% if comment.body_html %}
+ 						{{ comment.body_html | safe }}
+ 					{% else %}
+						{{ comment.body }}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</li>
+	{% endfor %}
+</ul>

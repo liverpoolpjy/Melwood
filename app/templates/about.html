@@ -5,7 +5,13 @@
 {% block page_content %}
 
 <div class="page-header">
-	<img class="img-rounded profile-thumbnail " src="{{ url_for('static', filename='page_icon.png') }}" alt="100*100">
+	
+	<div style="width:600px; padding:5px">
+		<div style="float:left; margin-right:50px">
+			<img class="img-rounded profile-thumbnail " src="{{ url_for('static', filename='about_pic.jpg') }}">
+		</div>
+		<p>文字</p>
+	</div>
 </div>
 
 {% endblock %}

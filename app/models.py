@@ -5,6 +5,7 @@ from datetime import datetime
 from markdown import markdown
 import bleach
 
+
 class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
@@ -46,4 +47,4 @@ class Comment(db.Model):
             markdown(value, output_format='html'),
             tags=allowed_tags, strip=True))
 
-db.event.listen(Post.body, 'set', Post.on_changed_body)
+db.event.listen(Comment.body, 'set', Post.on_changed_body)

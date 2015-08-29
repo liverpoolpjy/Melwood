@@ -2,12 +2,36 @@
 
 {% block page_content %}
 
+
 <div class="jumbotron">
 	<div class="container">
-			<h1>{{ posts[0].title }}</h1>
-		
-			<p><a class="btn btn-primary btn-lg" href="{{ url_for('.post', id=posts[0].id) }}" role="button">Learn more</a></p>
+			<h2><a href="{{ url_for('.post', id=posts[0].id) }}"><strong>{{ posts[0].title }}</strong></a></h2>
+			<p><i>{{ moment(posts[0].timestamp).format('L') }}</i></p>
+			<p >{{ posts[0].body_html | safe | truncate(100, True)}}</p>
+			
 	</div>
+	<div class="container"><a class="btn btn-primary btn-lg" href="{{ url_for('.post', id=posts[0].id) }}" role="button">Learn more</a></div>
+</div>
+
+<div class="jumbotron">
+	<div class="container">
+
+			<h2><a href="{{ url_for('.post', id=posts[1].id) }}"><strong>{{ posts[1].title }}</strong></a></h2>
+			<p><i>{{ moment(posts[1].timestamp).format('L') }}</i></p>
+			<p >{{ posts[1].body_html | safe | truncate(100, True)}}</p>
+		
+	</div>
+	<div class="container"><a class="btn btn-primary btn-lg" href="{{ url_for('.post', id=posts[1].id) }}" role="button">Learn more</a></div>
+</div>
+
+<div class="jumbotron">
+	<div class="container">
+			<h2><a href="{{ url_for('.post', id=posts[2].id) }}"><strong>{{ posts[2].title }}</strong></a></h2>
+			<p><i>{{ moment(posts[2].timestamp).format('L') }}</i></p>
+			<p >{{ posts[2].body_html | safe | truncate(100, True)}}</p>
+			
+	</div>
+	<div class="container"><a class="btn btn-primary btn-lg" href="{{ url_for('.post', id=posts[2].id) }}" role="button">Learn more</a></div>
 </div>
 
 

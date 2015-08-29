@@ -4,19 +4,25 @@
 
 {% block head %}
 {{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 {% endblock %}
 
 {% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
 	<div class="container">
-		<a href="/" class="navbar-brand"><strong>Melwood</strong></a>
-		<ul class="nav navbar-nav navbar-right">
+
+		<a href="/" class="navbar-brand">
+			<img class="img-rounded profile-thumbnail " src="{{ url_for('static', filename='M48.ico') }}"><strong>Melwood</strong>
+		</a>
+		<!-- <ul class="nav navbar-nav navbar-right"> -->
+		<ul  href="/" class="nav navbar-nav navbar-brand navbar-right">
 			<li>
-				<a href="/archive"><strong>archives</strong></a>
+				<a href="/archive"><strong>archive</strong></a>
 			</li>
 			<li>
-				<a href="/"><strong>pictures</strong></a>
+				<a href="/"><strong>photo</strong></a>
 			</li>
 			<li>
 				<a href="/about"><strong>about</strong></a>
